@@ -7,5 +7,10 @@
     "twitter_account": "doughellmann",
     "github_account": "dhellmann",
     "slug": "{{ cookiecutter.presentation_title|lower|replace(' ', '-')|replace(\"'\", '') }}",
-	"repo_name": "presentation-{{cookiecutter.slug}}"
+	"repo_name": "presentation-{{cookiecutter.slug}}",
+	"_copy_without_render": [
+		"*.scss",
+		"*.css",
+		"*.js"
+	]
 }
