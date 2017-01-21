@@ -1,8 +1,15 @@
-****************************
-{{ cookiecutter.repo_name }}
-****************************
+.. -*- mode: rst -*-
+
+========================
+ {{cookiecutter.title}}
+========================
 
 {{ cookiecutter.presentation_description }}
+
+View This Presentation Online
+=============================
+
+https://doughellmann.com/presentations/{{cookiecutter.slug}}
 
 Requirements
 ============
