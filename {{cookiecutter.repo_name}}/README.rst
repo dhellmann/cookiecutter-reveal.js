@@ -1,8 +1,8 @@
 .. -*- mode: rst -*-
 
-========================
- {{cookiecutter.title}}
-========================
+=====================================
+ {{cookiecutter.presentation_title}}
+=====================================
 
 {{ cookiecutter.presentation_description }}
 
