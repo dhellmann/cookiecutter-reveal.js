@@ -14,29 +14,23 @@ https://doughellmann.com/presentations/{{cookiecutter.slug}}
 Requirements
 ============
 
-You have to install the following requirements to build and serve the
-presentation:
+You will need a few tools to build and serve the presentation:
 
 - `npm <https://www.npmjs.com/>`_
-- `Python 3.4 <https://www.python.org/>`_ or newer
+- `Python 3 <https://www.python.org/>`_
 
-Installing and linking the dependencies
-=======================================
+Setup
+=====
 
-You can install and link all required resources by running
+To update the presentation::
 
-::
+  $ pip install -r requirements.txt
+  $ cog.py -r index.html
 
-    $ make link
+To run the presentation::
 
-Running the presentation
-========================
-
-You can serve the slides by running
-
-::
-
-    $ make serve
+  $ npm install
+  $ npm start
 
 Controlling the presentation
 ============================
@@ -47,15 +41,6 @@ Controlling the presentation
 - Use the *S* key to open the moderator monitor containing the notes.
 - Use the *B* key to make the screen dark. Push the same key to brighten the screen again.
 - Use the *ESC* key to enter the bird's-eye view showing all slides. Then use the *arrow keys* to move around.
-
-Showing all tasks in the ``Makefile``
-=====================================
-
-You can show all tasks in the ``Makefile`` by running
-
-::
-
-    $ make
 
 License
 =======
