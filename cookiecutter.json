@@ -3,8 +3,9 @@
     "presentation_subtitle": "The subtitle is displayed right below the title",
     "presentation_description": "A longer description of your presentation",
     "presentation_language": "en",
-    "repo_name": "{{ cookiecutter.presentation_title|lower|replace(' ', '-')|replace(\"'\", '') }}"
     "author_name": "Doug Hellmann",
     "twitter_account": "doughellmann",
     "github_account": "dhellmann",
+    "slug": "{{ cookiecutter.presentation_title|lower|replace(' ', '-')|replace(\"'\", '') }}",
+	"repo_name": "presentation-{{cookiecutter.slug}}"
 }
