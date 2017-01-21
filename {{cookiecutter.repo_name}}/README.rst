@@ -4,8 +4,6 @@
  {{cookiecutter.presentation_title}}
 =====================================
 
-{{ cookiecutter.presentation_description }}
-
 View This Presentation Online
 =============================
 

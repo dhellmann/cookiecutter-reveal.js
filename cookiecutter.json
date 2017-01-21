@@ -1,8 +1,6 @@
 {
     "presentation_title": "The title of your presentation",
-    "presentation_subtitle": "The subtitle is displayed right below the title",
-    "presentation_description": "A longer description of your presentation",
-    "presentation_language": "en",
+    "presentation_event": "PyATL",
     "author_name": "Doug Hellmann",
     "twitter_account": "doughellmann",
     "github_account": "dhellmann",
