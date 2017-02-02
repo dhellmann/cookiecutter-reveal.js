@@ -5,7 +5,25 @@ from tools.output import capture
 
 
 @capture
-def showcode(filename, extras='data-trim data-noescape', lines=None):
+def showfile(filename, extras='data-trim data-noescape', lines=None, mark=()):
+    print('<pre {}>\n'.format(extras))
+    with open(filename, 'r', encoding='utf-8') as f:
+        body = f.readlines()
+    if lines:
+        # Editors start numbering lines at 1, so make it easier for me
+        # to pass a start and stop pair by converting from the 1
+        # indexed list to the 0 indexed list for the start value.
+        body = body[lines[0] - 1:lines[1]]
+    for i, line in enumerate(body, 1):
+        out = line.replace('<', '&lt;')
+        if i in mark:
+            out = '<mark>{}</mark>'.format(out)
+        print(out, end='')
+    print('</pre>\n')
+
+
+@capture
+def showcode(filename, extras='data-trim data-noescape', lines=None, mark=()):
     print('<pre><code {}>\n'.format(extras))
     with open(filename, 'r', encoding='utf-8') as f:
         body = f.readlines()
@@ -14,13 +32,16 @@ def showcode(filename, extras='data-trim data-noescape', lines=None):
         # to pass a start and stop pair by converting from the 1
         # indexed list to the 0 indexed list for the start value.
         body = body[lines[0] - 1:lines[1]]
-    for line in body:
-        print(line.replace('<', '&lt;'), end='')
+    for i, line in enumerate(body, 1):
+        out = line.replace('<', '&lt;')
+        if i in mark:
+            out = '<mark>{}</mark>'.format(out)
+        print(out, end='')
     print('</code></pre>\n')
 
 
 @capture
-def runscript(filename, *args, extras='data-trim data-noescape', fade_in=False):
+def runscript(filename, *args, extras='data-trim data-noescape', fade_in=False, mark=()):
     print('<pre {}'.format(extras), end='')
     if fade_in:
         print(' class="fragment fade-in"', end='')
@@ -31,5 +52,8 @@ def runscript(filename, *args, extras='data-trim data-noescape', fade_in=False):
     )
     output = result.stdout.decode('utf-8').rstrip('\n')
     output = output.replace('<', '&lt;')
-    print(output)
+    for i, line in enumerate(output.splitlines(), 1):
+        if i in mark:
+            line = '<mark>{}</mark>'.format(line)
+        print(line)
     print('\n</pre>\n')
