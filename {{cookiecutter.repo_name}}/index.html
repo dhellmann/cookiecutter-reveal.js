@@ -78,12 +78,55 @@ import re
 
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.js"></script>
+	<script src="js/lineselect.js"></script>
 
     <script>
+
+      function _prev_slide() {
+          if (!_reveal_navigation_active()) {
+              return;
+          }
+          console.log('reveal: prev');
+          Reveal.navigatePrev();
+      };
+
+      function _next_slide() {
+          if (!_reveal_navigation_active()) {
+              return;
+          }
+          console.log('reveal: next');
+          Reveal.navigateNext();
+      };
+
+      function _reveal_navigation_active () {
+          return !document.querySelector( '.reveal' ).classList.contains('reveal-nav-off');
+      };
+
+      function _toggle_reveal_navigation () {
+          if (_reveal_navigation_active()) {
+              console.log('reveal: turning off nav');
+              document.querySelector( '.reveal' ).classList.add('reveal-nav-off');
+          } else {
+              console.log('reveal: turning on nav');
+              document.querySelector( '.reveal' ).classList.remove('reveal-nav-off');
+          };
+      };
+
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
         controls: true,
+        keyboard: {
+          // Use Logitech presenter remote black screen button
+          // to control when we are changing slides vs. selected lines.
+          190: _toggle_reveal_navigation,
+          // p, page up
+          80: _prev_slide,
+          33: _prev_slide,
+          // n, page down
+          78: _next_slide,
+          34: _next_slide,
+        },
         progress: true,
         history: true,
         center: true,
@@ -99,5 +142,24 @@ import re
         ]
       });
     </script>
+
+    <script>
+      /* find all of the lineselect nodes and add spans for their lines */
+      $(function() {
+        $('.lineselect_selectable').each(function (i, e) {
+          var $e = $(e);
+          var h = $e.html();
+          h = h.replace(/\n\n/g, "\n \n");
+          h = h.replace(/\n/g, "</span>\n<span class='line'>");
+          h = "<span class='line'>" + h + "</span>";
+          $e.html(h);
+        });
+        /* enable lineselect for the line nodes */
+        $(".lineselect_selectable").each(function () {
+          $(this).lineselect({ lines: "span.line" });
+        });
+      });
+    </script>
+
   </body>
 </html>
