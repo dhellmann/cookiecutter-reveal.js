@@ -101,7 +101,7 @@ module.exports = function(grunt) {
         },
 
         zip: {
-            'regexes-fear.zip': [
+            '{{cookiecutter.repo_name}}.zip': [
                 'index.html',
                 'css/**',
                 'js/**',
