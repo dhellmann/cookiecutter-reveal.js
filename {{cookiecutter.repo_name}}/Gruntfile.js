@@ -107,7 +107,10 @@ module.exports = function(grunt) {
                 'js/**',
                 'lib/**',
                 'images/**',
+                'img/**',
                 'plugin/**',
+                '**.graphviz',
+                '**.svg',
                 '**.md'
             ]
         },
