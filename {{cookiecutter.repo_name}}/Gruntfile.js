@@ -45,6 +45,17 @@ module.exports = function(grunt) {
                         ext: '.css'
                     }
                 ]
+            },
+            other: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'css',
+                        src: ['*.scss'],
+                        dest: 'css',
+                        ext: '.css'
+                    }
+                ]
             }
         },
 
@@ -128,6 +139,10 @@ module.exports = function(grunt) {
                 files: [ 'css/reveal.scss' ],
                 tasks: 'css-core'
             },
+            css_other: {
+                files: [ 'css/selectable.scss' ],
+                tasks: 'css_other'
+            },
             html: {
                 files: root.map(path => path + '/*.html')
             },
@@ -173,7 +188,7 @@ module.exports = function(grunt) {
     grunt.registerTask( 'default', [ 'css', 'js' ] );
 
     // JS task
-    grunt.registerTask( 'js', [ 'jshint', 'uglify', 'qunit' ] );
+    grunt.registerTask( 'js', [ 'jshint', 'uglify' ] );
 
     // Theme CSS
     grunt.registerTask( 'css-themes', [ 'sass:themes' ] );
